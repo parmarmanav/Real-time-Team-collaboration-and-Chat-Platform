@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  eventType   EventType
+  userId      String
+  workspaceId String?
+  details     Json?
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+}
+
+enum EventType {
+  WORKSPACE_CREATED
+  USER_JOINED
+  CHANNEL_CREATED
+  MESSAGE_DELETED
+  USER_LOGGED_IN
+}

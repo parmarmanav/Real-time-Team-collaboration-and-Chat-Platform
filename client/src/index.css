@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6; /* blue-500 */
+  --color-secondary: #64748b; /* slate-500 */
+  --color-accent: #8b5cf6; /* violet-500 */
+  --color-background-dark: #0f172a; /* slate-900 */
+  --color-surface-dark: #1e293b; /* slate-800 */
+  
+  /* Additional theme customization here */
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base resets or common global styles can go here */
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.dark body {
+  @apply bg-background-dark text-slate-50;
+}
