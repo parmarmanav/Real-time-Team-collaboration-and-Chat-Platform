@@ -10,19 +10,20 @@ services:
       - mongo_data:/data/db
     restart: unless-stopped
 
-  postgres:
-    image: postgres:15
-    container_name: chatapp-postgres
+  mysql:
+    image: mysql:8.0
+    container_name: chatapp-mysql
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: chatapp_audit
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: chatapp_audit
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
     ports:
-      - '5432:5432'
+      - '3307:3306'
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
     restart: unless-stopped
 
 volumes:
   mongo_data:
-  postgres_data:
+  mysql_data:
